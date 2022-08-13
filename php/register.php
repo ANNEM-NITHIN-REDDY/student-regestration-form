@@ -40,13 +40,14 @@ if(isset($_POST['register'])){
         $sql = "INSERT INTO regestrationform(ID,fname,lname,email,course,pnumber,gender,age,dob,paddress)"."VALUES"."('$id','$fname','$lname','$email','$course','$pnumber','$gender','$age','$dob','$paddress');";
         try{
         $result = mysqli_query($connection,$sql);
+        if($result){
+            header('Location:names_list.php');
+        }
     }
         catch(Exception $e){
              echo "ID already exists";
         }
-        if($result){
-            header('Location:names_list.php');
-        }
+        
     }
     else{
         echo "connection failed";
